@@ -9,6 +9,7 @@ class Header extends React.Component{
 		return(
 		<div>
 			<h1>Header</h1>
+			<p>My Header name is : {this.props.name}</p>
 		</div>
 		);
 	}
@@ -32,7 +33,8 @@ class MyComponent extends React.Component{
 				<h3>My First React JS program</h3>
 				<p>Using Styles</p>
 				<p>The sum of number is : {2+1}</p>
-				<Header/>
+				<Header name="Afsha" />
+				<Header name="Mohammed" />
 				<Footer/>
 			</div>
 		);
