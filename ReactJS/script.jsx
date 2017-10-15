@@ -36,24 +36,19 @@ constructor(props){
 
 
 
+
 class MyComponent extends React.Component{
 	 constructor() {
       super();
 		
-      this.state = {
-         data: []
-      }
-	
-      this.setStateHandler = this.setStateHandler.bind(this);
+      this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
+	};
+     
+
+   forceUpdateHandler() {
+      this.forceUpdate();
    };
 
-   setStateHandler() {
-      var item = "setState..."
-      var myArray = this.state.data;
-      myArray.push(item)
-     
-      this.setState({data: this.state.data+item})
-   };
 	render() {
 		return(
 			<div style={styles}>
@@ -66,8 +61,8 @@ class MyComponent extends React.Component{
 				<Header name="Mohammed" />
 				<Footer/>
 				
-				<button onClick={this.setStateHandler}>Set State </button>
-		<p>State Array: {this.state.data}</p>
+				<button onClick={this.forceUpdateHandler}>Force Update </button>
+		<p>Random Number: {Math.random()}</p>
 			</div>
 		);
 	}
