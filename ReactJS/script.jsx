@@ -16,11 +16,20 @@ class Header extends React.Component{
 }
 
 class Footer extends React.Component{
+	constructor(props){
+	super(props)
+	this.state = {
+		firstName : 'Afsha',
+		lastName : 'Mohammed'
+	}
+}
 	render(){
+	
 		return(
 		<div>
 			<h1>Footer</h1>
-			</div>
+			<p>My full name is {this.state.firstName} {this.state.lastName}</p>
+		</div>
 		);
 	}
 }
