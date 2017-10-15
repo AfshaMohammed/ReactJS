@@ -38,16 +38,15 @@ constructor(props){
 
 
 class MyComponent extends React.Component{
-	 constructor() {
-      super();
-		
-      this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
-	};
-     
+	 constructor(){
+	 	super();
+	 	this.findDomNodeHandler = this.findDomNodeHandler.bind(this);
+	 };
 
-   forceUpdateHandler() {
-      this.forceUpdate();
-   };
+	 findDomNodeHandler(){
+	 	var myDir = document.getElementById('myDir')
+	 	ReactDOM.findDOMNode(myDir).style.color = 'gray';
+	 }
 
 	render() {
 		return(
@@ -61,8 +60,9 @@ class MyComponent extends React.Component{
 				<Header name="Mohammed" />
 				<Footer/>
 				
-				<button onClick={this.forceUpdateHandler}>Force Update </button>
-		<p>Random Number: {Math.random()}</p>
+				<button onClick= {this.findDomNodeHandler}>FindDomNode</button>
+				<div id="myDir">Hello World</div>
+				
 			</div>
 		);
 	}
