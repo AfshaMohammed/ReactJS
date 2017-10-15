@@ -1,11 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+var styles = {color:'red'}
+var styles1 = {backgroundColor: 'gray'}
 
-class MyComponent extends React.Component{      
+class Header extends React.Component{
 	render(){
 		return(
-			<h2>Hello World!</h2>
+		<div>
+			<h1>Header</h1>
+		</div>
+		);
+	}
+}
+
+class Footer extends React.Component{
+	render(){
+		return(
+		<div>
+			<h1>Footer</h1>
+			</div>
+		);
+	}
+}
+
+class MyComponent extends React.Component{
+	render() {
+		return(
+			<div style={styles}>
+				<h2 style={styles1}>Hello World!</h2>
+				<h3>My First React JS program</h3>
+				<p>Using Styles</p>
+				<p>The sum of number is : {2+1}</p>
+				<Header/>
+				<Footer/>
+			</div>
 		);
 	}
 }
