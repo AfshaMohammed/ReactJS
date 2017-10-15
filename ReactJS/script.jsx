@@ -24,7 +24,7 @@ class Footer extends React.Component{
 	}
 }
 	render(){
-	
+	setTimeout(() => {this.setState({firstName: 'Raghava', lastName: 'Ammisetty'})},5000);
 		return(
 		<div>
 			<h1>Footer</h1>
