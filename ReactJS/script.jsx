@@ -67,3 +67,5 @@ class Child extends React.Component {
 ReactDOM.render(
 	<Parent/>, document.getElementById('content')
 );
+setTimeout(() => {
+   ReactDOM.unmountComponentAtNode(document.getElementById('content'));}, 10000);
