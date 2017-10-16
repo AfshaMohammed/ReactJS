@@ -1,72 +1,69 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+class Parent extends React.Component {
 
-var styles = {color:'red'}
-var styles1 = {backgroundColor: 'gray'}
+   constructor(props) {
+      super(props);
+		
+      this.state = {
+         data: 0
+      }
 
-class Header extends React.Component{
-	render(){
-		return(
-		<div>
-			<h1>Header</h1>
-			<p>My Header name is : {this.props.name}</p>
-		</div>
-		);
-	}
+      this.setNewNumber = this.setNewNumber.bind(this)
+   };
+
+   setNewNumber() {
+      this.setState({data: this.state.data + 1})
+   }
+
+   render() {
+      return (
+         <div>
+            <button onClick = {this.setNewNumber}>INCREMENT</button>
+            <Child myNumber = {this.state.data}></Child>
+         </div>
+      );
+   }
 }
 
-class Footer extends React.Component{
-constructor(props){
-	super(props)
-	this.state = {
-		firstName : 'Afsha',
-		lastName : 'Mohammed'
-	}
-}
-	render(){
-		setTimeout(()=> {this.setState({firstName: 'Raghava', lastName:'Ammisetty'})},4000);
-		return(
-		<div>
-			<h1>Footer</h1>
-			<p>My full name is {this.state.firstName} {this.state.lastName}</p>
-			</div>
-		);
-	}
-}
+class Child extends React.Component {
 
+   componentWillMount() {
+      console.log('Component WILL MOUNT!')
+   }
 
+   componentDidMount() {
+      console.log('Component DID MOUNT!')
+   }
 
+   componentWillReceiveProps(newProps) {    
+      console.log('Component WILL RECIEVE PROPS!')
+   }
 
-class MyComponent extends React.Component{
-	 constructor(){
-	 	super();
-	 	this.findDomNodeHandler = this.findDomNodeHandler.bind(this);
-	 };
+   shouldComponentUpdate(newProps, newState) {
+      return true;
+   }
 
-	 findDomNodeHandler(){
-	 	var myDir = document.getElementById('myDir')
-	 	ReactDOM.findDOMNode(myDir).style.color = 'gray';
-	 }
+   componentWillUpdate(nextProps, nextState) {
+      console.log('Component WILL UPDATE!');
+   }
 
-	render() {
-		return(
-			<div style={styles}>
+   componentDidUpdate(prevProps, prevState) {
+      console.log('Component DID UPDATE!')
+   }
 
-				<h2 style={styles1}>Hello World!</h2>
-				<h3>My First React JS program</h3>
-				<p>Using Styles</p>
-				<p>The sum of number is : {2+1}</p>
-				<Header name="Afsha" />
-				<Header name="Mohammed" />
-				<Footer/>
-				
-				<button onClick= {this.findDomNodeHandler}>FindDomNode</button>
-				<div id="myDir">Hello World</div>
-				
-			</div>
-		);
-	}
+   componentWillUnmount() {
+      console.log('Component WILL UNMOUNT!')
+   }
+	
+   render() {
+      return (
+         <div>
+            <h3>{this.props.myNumber}</h3>
+         </div>
+      );
+   }
 }
 ReactDOM.render(
-	<MyComponent/>, document.getElementById('content')
+	<Parent/>, document.getElementById('content')
 );
