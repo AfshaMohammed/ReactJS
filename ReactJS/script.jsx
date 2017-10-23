@@ -1,28 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Forms extends React.Component{
-   constructor(){
-      super();
-      this.state = {
-         data: 'Initial data...!'
+class App extends React.Component{
+      constructor(){
+         super();
+         this.state = {
+            data: ''
+         }
+         this.updateState = this.updateState.bind(this);
+         this.clearData = this.clearData.bind(this);
       }
-      this.updateState = this.updateState.bind(this);
-   };
-   updateState(e){
-      this.setState({data: 'Data updated...!'});
-   }
 
+      updateState(e){
+         this.setState({data: e.target.value});
+      }
+      clearData(){
+         this.setState({data: ''});
+         ReactDOM.findDOMNode(this.refs.myInput).focus();
+      }
 
    render(){
       return(
          <div>
-            <button onClick={this.updateState}>Click to update</button>
+            <input type="text" value={this.state.data} onChange={this.updateState} ref="myInput" />
+            <button onClick={this.clearData}>Click</button>
             <h4>{this.state.data}</h4>
          </div>
       );
    }
 }
 ReactDOM.render(
-   <Forms/>, document.getElementById('content')
+   <App/>, document.getElementById('content')
 );
