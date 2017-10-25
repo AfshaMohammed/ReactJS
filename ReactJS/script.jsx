@@ -1,38 +1,34 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
+var newData = {
+   data: 'Data from HOC...'
+}
+
+var MyHOC = ComposedComponent => class extends React.Component {
+
+   componentDidMount() {
+      this.setState({
+         data: newData.data
+      });
+   }
+
+   render() {
+      return <ComposedComponent {...this.props} {...this.state} />;
+   }
+};
 
 
-class MyComponent extends React.Component{
-   render(){
-   return(
-      <div>
-      
-      <Text/>
-      <Input/>
-      </div>
-   );
-
+class MyComponent extends React.Component {
+   render() {
+      return (
+         <div>
+            <h1>{this.props.data}</h1>
+         </div>
+      )
    }
 }
-class Text extends React.Component{
-   render(){
-      return(
-         <h1>It is a Stateful Component</h1>
-      );
-   }
-}
-class Input extends React.Component{
-      render(){
-         return(
-            <input type="text" name="someText"/>
-         );
-      }
 
-}
-ReactDOM.render(
-   <MyComponent/>, document.getElementById('content')
-);
-
+export default MyHOC(MyComponent);
 
 
 
