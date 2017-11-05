@@ -1,34 +1,18 @@
+
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-var newData = {
-   data: 'Data from HOC...'
-}
-
-var MyHOC = ComposedComponent => class extends React.Component {
-
-   componentDidMount() {
-      this.setState({
-         data: newData.data
-      });
-   }
-
-   render() {
-      return <ComposedComponent {...this.props} {...this.state} />;
-   }
-};
-
-
-class MyComponent extends React.Component {
-   render() {
-      return (
-         <div>
-            <h1>{this.props.data}</h1>
-         </div>
-      )
+class App extends React.Component{
+   render(){
+      return React.createElement('h1', null, 'Hello World!')
    }
 }
 
-export default MyHOC(MyComponent);
+ReactDOM.render(
+   <App />, document.getElementById('content')
+   );
+
+
 
 
 
