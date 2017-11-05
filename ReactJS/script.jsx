@@ -2,15 +2,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class App extends React.Component{
-   render(){
-      return React.createElement('h1', null, 'Hello World!')
-   }
-}
+const App = () => <h1>Hello Stateless</h1>
 
 ReactDOM.render(
    <App />, document.getElementById('content')
    );
+
+
+
+
+
+
+
+
 
 
 
