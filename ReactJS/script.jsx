@@ -2,12 +2,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const App = () => <h1>Hello Stateless</h1>
-
+class App extends React.Component{
+   render(){
+      return(
+            <h1>{this.props.text}</h1>
+         );
+   }
+}
 ReactDOM.render(
-   <App />, document.getElementById('content')
+      <App text= "Hello! Welcome..."/>, document.getElementById('content')
    );
-
 
 
 
