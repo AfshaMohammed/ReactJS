@@ -5,7 +5,7 @@ class App extends React.Component{
    constructor(){
       super();
       this.state = {
-         text: "This is a state text"
+         text: "This is a state text!"
       }
    }
    update(e){
