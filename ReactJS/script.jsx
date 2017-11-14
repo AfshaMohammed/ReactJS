@@ -1,26 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+ 
 
 class App extends React.Component{
+   constructor(){
+      super();
+      this.state = {
+         data: "My data is "
+      }
+
+   }
+   update(e){
+      this.setState({data: e.target.value})
+   }
    render(){
       return(
-            <Title text='1234561' />
-         );
+            <div>
+               <h1>{this.state.data}</h1>
+               <Header update={this.update.bind(this)} />
+               <Header update={this.update.bind(this)} />
+               <Header update={this.update.bind(this)} />
+               <Header update={this.update.bind(this)} />
+            </div>
+         )
    }
 }
-const Title = (props) => <h1>Title: {props.text}</h1>
-
-Title.propTypes = {
-   text(props, propName, component){
-      if(!(propName in props)){
-         return new Error("missing ${propName}")
-      }
-      if(props[propName].length < 5 ){
-         return new Error("${propName} was too short!")
-      }
-   }
-}
+const Header = (props) => <input type="text" onChange={props.update} />
 ReactDOM.render(
       <App />, document.getElementById('content')
    );
+
+
+
+
+
+
+
+
+
+
