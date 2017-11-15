@@ -6,20 +6,31 @@ class App extends React.Component{
    constructor(){
       super();
       this.state = {
-         data: '---'
+         a: ''
       }
       this.update = this.update.bind(this)
       }
       update(e){
-         this.setState({data: e.type})
+         this.setState({a: this.refs.a.value,
+                        b: this.refs.b.value,
+                        c: this.refs.c.value})
+         
       }
 
    render(){
       return(
             <div>
-               <textarea onChange={this.update} onCopy={this.update} onCut={this.update} onPaste={this.update} onFocus={this.update} onDoubleClick={this.update} onBlur={this.update} col="50" row="30" />
-               <h1>{this.state.data}</h1>
+               FirstName: <input ref="a" type="text" placeholder="FirstName" onChange={this.update.bind(this)} />
+               <h1>{this.state.a}</h1>
+               <hr/>
+               LastName: <input ref="b" type="text" placeholder="LastName" onChange={this.update.bind(this)} />
+                <h1>{this.state.b}</h1>
+                <hr/>
+                EmailAddress: <input ref="c" type="text" placeholder="Email Address" onChange={this.update.bind(this)} />
+                 <h1>{this.state.c}</h1>
+
             </div>
+
          );
    }
 }
