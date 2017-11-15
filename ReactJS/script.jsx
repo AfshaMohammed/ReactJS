@@ -1,43 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-   
-
-class App extends React.Component{
-   constructor(){
-      super();
-      this.state = {
-         a: ''
+   class App extends React.Component{
+      constructor(){
+         super();
+         this.state = {
+            items: []
+         }
       }
-      this.update = this.update.bind(this)
+      componentWillMount(){
+         fetch('https://swapi.co/api/people')
+         .then(response => response.json())
+         .then(({results:items}) => this.setState({items}))
       }
-      update(e){
-         this.setState({a: this.refs.a.value,
-                        b: this.refs.b.value,
-                        c: this.refs.c.value})
-         
+      render(){
+         let items = this.state.items
+         return(
+               <div>
+                  {items.map(item => <h4 key={item.name}>{item.name}</h4>)}
+               </div>
+            );
       }
-
-   render(){
-      return(
-            <div>
-               FirstName: <input ref="a" type="text" placeholder="FirstName" onChange={this.update.bind(this)} />
-               <h1>{this.state.a}</h1>
-               <hr/>
-               LastName: <input ref="b" type="text" placeholder="LastName" onChange={this.update.bind(this)} />
-                <h1>{this.state.b}</h1>
-                <hr/>
-                EmailAddress: <input ref="c" type="text" placeholder="Email Address" onChange={this.update.bind(this)} />
-                 <h1>{this.state.c}</h1>
-
-            </div>
-
-         );
    }
-}
-ReactDOM.render(
+     ReactDOM.render(
       <App />, document.getElementById('content')
    );
-
 
 
 
